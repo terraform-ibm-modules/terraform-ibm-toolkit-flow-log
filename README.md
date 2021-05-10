@@ -42,7 +42,7 @@ This module makes use of the output from other modules:
 
 ```hcl-terraform
 module "flow_log" {
-  module = "github.com/cloud-native-toolkit/terraform-ibm-flow-logs.git"
+  module = "github.com/cloud-native-toolkit/terraform-ibm-flow-log.git"
 
   resource_group_id = module.resource_group.id
   cos_bucket_name   = module.cos_bucket.bucket_name
