@@ -44,6 +44,8 @@ This module makes use of the output from other modules:
 module "flow_log" {
   module = "github.com/cloud-native-toolkit/terraform-ibm-flow-log.git"
 
+  region            = var.region
+  ibmcloud_api_key  = var.ibmcloud_api_key
   resource_group_id = module.resource_group.id
   cos_bucket_name   = module.cos_bucket.bucket_name
   target_count      = module.vpc.count
