@@ -31,6 +31,6 @@ module "cos_bucket" {
 
 resource null_resource print_bucket {
   provisioner "local-exec" {
-    command = "echo 'Bucket created: ${module.dev_cos_bucket.bucket_name != null ? module.dev_cos_bucket.bucket_name : ""}'"
+    command = "echo 'Bucket created: ${module.cos_bucket.bucket_name != null ? module.cos_bucket.bucket_name : ""}'"
   }
 }
