@@ -1,8 +1,6 @@
 module "flow_log" {
   source = "./module"
 
-  region            = var.region
-  ibmcloud_api_key  = var.ibmcloud_api_key
   resource_group_id = module.resource_group.id
   cos_bucket_name   = module.cos_bucket.bucket_name
   target_count      = module.vpc.count
