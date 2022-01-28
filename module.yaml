@@ -7,6 +7,9 @@ tags:
     - vpc
 versions:
 - platforms: []
+  providers:
+    - name: ibm
+      source: "ibm-cloud/ibm"
   dependencies:
     - id: resource_group
       refs:
@@ -19,7 +22,7 @@ versions:
       optional: true
     - id: target
       refs: []
-      interface: github.com/cloud-native-toolkit/garage-terraform-modules#ibm-vpc-resource
+      interface: github.com/cloud-native-toolkit/automation-modules#ibm-vpc-resource
     - id: auth
       refs: []
       optional: true
@@ -49,7 +52,3 @@ versions:
         id: auth
         output: id
       optional: true
-    - name: region
-      scope: global
-    - name: ibmcloud_api_key
-      scope: global

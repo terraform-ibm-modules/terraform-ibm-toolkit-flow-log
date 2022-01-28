@@ -1,14 +1,4 @@
 
-variable "region" {
-  type        = string
-  description = "The IBM Cloud region where the cluster will be/has been installed."
-}
-
-variable "ibmcloud_api_key" {
-  type        = string
-  description = "The IBM Cloud api token"
-}
-
 variable "resource_group_id" {
   type        = string
   description = "The id of the resource group where the flow logs will be provisioned"
