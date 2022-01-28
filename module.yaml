@@ -19,7 +19,7 @@ versions:
       optional: true
     - id: target
       refs: []
-      interface: github.com/cloud-native-toolkit/garage-terraform-modules#ibm-vpc-resource
+      interface: github.com/cloud-native-toolkit/automation-modules#ibm-vpc-resource
     - id: auth
       refs: []
       optional: true
