@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+BIN_DIR=$(cat .bin_dir)
+
+export PATH="${BIN_DIR}:${PATH}"
+
 SCRIPT_DIR=$(cd $(dirname "$0"); pwd -P)
 
 echo "terraform.tfvars"
