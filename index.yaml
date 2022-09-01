@@ -1,4 +1,4 @@
-id: github.com/cloud-native-toolkit/terraform-ibm-flow-log
+id: github.com/terraform-ibm-modules/terraform-ibm-toolkit-flow-log
 name: ibm-flow-logs
 type: terraform
 description: Module to create Flow Logs for a provided resource
@@ -7,6 +7,83 @@ tags:
   - flow log
   - vpc
 versions:
+  - platforms: []
+    providers:
+      - name: ibm
+        source: ibm-cloud/ibm
+    dependencies:
+      - id: resource_group
+        refs:
+          - source: github.com/cloud-native-toolkit/terraform-ibm-resource-group
+            version: '>= 2.1.0'
+      - id: cos_bucket
+        refs:
+          - source: >-
+              github.com/cloud-native-toolkit/terraform-ibm-object-storage-bucket
+            version: '>= 0.0.1'
+        optional: true
+      - id: target
+        refs: []
+        interface: github.com/cloud-native-toolkit/automation-modules#ibm-vpc-resource
+      - id: auth
+        refs: []
+        optional: true
+    variables:
+      - name: resource_group_id
+        type: string
+        description: The id of the resource group where the flow logs will be provisioned
+        moduleRef:
+          id: resource_group
+          output: id
+      - name: cos_bucket_name
+        type: string
+        description: Cloud Object Storage bucket name for flow logs
+        moduleRef:
+          id: cos_bucket
+          output: bucket_name
+      - name: target_count
+        type: number
+        description: The number of resources for which flow logs will be created
+        default: '0'
+        moduleRef:
+          id: target
+          output: count
+      - name: target_ids
+        type: list(string)
+        description: The ids of the target resources for the flow log
+        moduleRef:
+          id: target
+          output: ids
+      - name: target_names
+        type: list(string)
+        description: The names of the target resources for the flow logs
+        moduleRef:
+          id: target
+          output: names
+      - name: auth_id
+        type: string
+        description: >-
+          The id of the service authorization that allows the flow log to write
+          to the cos bucket
+        default: ''
+        moduleRef:
+          id: auth
+          output: id
+        optional: true
+      - name: provision
+        type: bool
+        description: >-
+          Flag indicating that the subnet should be provisioned. If 'false' then
+          the subnet will be looked up.
+        default: true
+    version: v1.0.3
+    outputs:
+      - name: count
+        description: The number of flow logs created
+      - name: ids
+        description: The ids of the generated flow logs
+      - name: names
+        description: The names of the generated flow logs
   - platforms: []
     providers:
       - name: ibm
